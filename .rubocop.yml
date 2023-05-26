@@ -1,0 +1,44 @@
+AllCops:
+  Exclude:
+    - "spec/**/*"
+    - "db/schema.rb"
+    - "db/migrate/**/*"
+    - "app/misc/**/*"
+    - "config/**/*"
+    - "bin/**/*"
+    - "vendor/bundle/**/*"
+    - "lib/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+   Max: 40
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+  
