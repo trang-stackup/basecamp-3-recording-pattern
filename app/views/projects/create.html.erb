@@ -1,0 +1,9 @@
+<% if @project.errors.empty? %>
+  <h1>Project Created Successfully!</h1>
+  <p><%= notice %></p>
+  <p><%= link_to "View Project", @project %></p>
+<% else %>
+  <h1>New Project</h1>
+
+  <%= render "new" %>
+<% end %>
