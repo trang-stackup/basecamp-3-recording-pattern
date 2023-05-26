@@ -6,7 +6,8 @@ module BucketScoped
   end
 
   private
-    def set_bucket
-      @bucket = Current.account.buckets.find params[:bucket_id]
-    end
+
+  def set_bucket
+    @bucket = Current.account.buckets.find params[:bucket_id]
+  end
 end

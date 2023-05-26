@@ -16,7 +16,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create message" do
-    assert_difference('Message.count') do
+    assert_difference("Message.count") do
       post messages_url, params: { message: { content: @message.content, subject: @message.subject } }
     end
 
@@ -39,7 +39,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy message" do
-    assert_difference('Message.count', -1) do
+    assert_difference("Message.count", -1) do
       delete message_url(@message)
     end
 

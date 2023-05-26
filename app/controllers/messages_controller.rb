@@ -14,14 +14,13 @@ class MessagesController < ApplicationController
     @message = Message.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @recording = @bucket.record new_message
 
     respond_to do |format|
-      format.html { redirect_to bucket_message_url(@bucket, @recording), notice: 'Message was successfully created.' }
+      format.html { redirect_to bucket_message_url(@bucket, @recording), notice: "Message was successfully created." }
     end
   end
 
@@ -29,12 +28,13 @@ class MessagesController < ApplicationController
     @recording.update! recordable: new_message
 
     respond_to do |format|
-      format.html { redirect_to bucket_message_url(@bucket, @recording), notice: 'Message was successfully updated.' }
+      format.html { redirect_to bucket_message_url(@bucket, @recording), notice: "Message was successfully updated." }
     end
   end
 
   private
-    def new_message
-      Message.new params.require(:message).permit(:subject, :content)
-    end
+
+  def new_message
+    Message.new params.require(:message).permit(:subject, :content)
+  end
 end

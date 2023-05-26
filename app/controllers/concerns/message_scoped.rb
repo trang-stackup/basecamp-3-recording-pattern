@@ -6,7 +6,8 @@ module MessageScoped
   end
 
   private
-    def set_message
-      @message = @bucket.recordings.find(params[:recording_id])
-    end
+
+  def set_message
+    @message = @bucket.recordings.find(params[:recording_id])
+  end
 end
