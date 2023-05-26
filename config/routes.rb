@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   end
 
   # recordable_path(recording, filter: 'newest') => bucket_message_path(recording.bucket, recording, filter: 'newest')
-  direct(:recordable) { |recording| url_for [ "bucket_#{recording.recordable_name}", bucket_id: recording.bucket_id, id: recording.id ] }
+  # direct(:recordable) { |recording| url_for [ "bucket_#{recording.recordable}", bucket_id: recording.bucket_id, id: recording.id ] }
+  direct(:recordable) { |recording| url_for(["bucket_#{recording.recordable_name}".to_sym, bucket_id: recording.bucket_id, id: recording.id]) }
 end
