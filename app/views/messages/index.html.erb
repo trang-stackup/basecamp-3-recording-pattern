@@ -20,11 +20,11 @@
                   <%= tag.strong message.recordable.subject, class: "messages-table__subject" %>
                   <span class="messages-table__overflow">
                     <span class="txt--uncolor">
-                      John Doe
+                      <%= Current.account.name %>
 
                       <span class="u-hide-on-template">
                         •
-                        <time datetime="2020-06-28T12:31:49Z" data-local="time-or-date" title="June 28, 2020 at 2:31pm CEST">Jun 28</time>
+                        <time datetime="<%= Current.account.created_at %>" data-local="time-or-date"><%= Current.account.created_at.strftime("%b %d") %></time>
                         --
                         <%= message.recordable.content %>
                       </span>

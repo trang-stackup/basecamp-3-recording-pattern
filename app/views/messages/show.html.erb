@@ -7,13 +7,13 @@
 
       <div class="message__attribution">
         <figure class="message__avatar">
-          <%= image_tag "avatar-placeholder.gif", class: "avatar message__avatar-image" %>
+          <%= image_tag "avatar-placeholder.png", class: "avatar message__avatar-image" %>
         </figure>
         <div class="message__meta">
-          John Doe
+          <%= Current.account.name %>
 
           <div class="message__date u-hide-on-template">
-            <time datetime="2020-07-08T13:55:45Z" data-local="time-or-date" title="July 8, 2020 at 3:55pm CEST">Jul 8</time>
+            <time datetime="<%= Current.account.created_at %>" data-local="time-or-date"><%= Current.account.created_at.strftime("%b %d") %></time>
             <span class="metadata__divider">·</span>
             No one was notified.
           </div>
@@ -41,8 +41,8 @@
       <% @comments.each do |comment| %>
         <article class="thread-entry">
           <header class="thread-entry__header">
-            <%= image_tag "avatar-placeholder.gif", class: "avatar thread-entry__avatar" %>
-            <span class="thread-entry__author"><strong>Jane Doe</strong></span>
+            <%= image_tag "avatar-placeholder.png", class: "avatar thread-entry__avatar" %>
+            <span class="thread-entry__author"><strong><%= comment.bucket.account.name %></strong></span>
             <span class="thread-entry__options">
             <span class="action-sheet action-sheet--for-thread-entry thread-entry__menu u-position-context u-hide-on-phone">
               <span class="thread-entry__time metadata">
