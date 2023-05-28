@@ -2,7 +2,7 @@ module SetRecordable
   extend ActiveSupport::Concern
 
   included do
-    before_action :set_recordable, except: [:index, :new, :create]
+    before_action :set_recordable, only: [:show, :edit, :update]
   end
 
   private
