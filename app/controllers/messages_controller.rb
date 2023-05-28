@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   include SetRecordable
 
   def index
-    @messages = @bucket.messages
+    @messages = @bucket.recordings.where(recordable_type: "Message")
   end
 
   def show
