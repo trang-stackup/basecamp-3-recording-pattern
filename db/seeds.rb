@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 account_test = Account.create!(name: "test@abc.co")
-project = Project.create!(title: "abc project", account: account_test)
-bucket = Bucket.create!(account: account_test, bucketable: project)
+community = Community.create!(title: "abc community", account: account_test)
+bucket = Bucket.create!(account: account_test, bucketable: community)
 
 2.times do |i|
   pathway = Pathway.create!(subject: "pathway #{i + 1}", content: "hello world #{i + 1}")
@@ -32,9 +32,9 @@ pathway2 = Pathway.second
 skill3 = pathway2.recordings.sole.children.first.skill
 Recording.create!(bucket:, recordable: skill3, parent_id: recording_msg3.id)
 
-# account_dev has the same project as the
+# account_dev has the same community as the
 account_dev = Account.create!(name: "dev@abc.co")
-bucket_dev = Bucket.create!(account: account_dev, bucketable: project)
+bucket_dev = Bucket.create!(account: account_dev, bucketable: community)
 
 pathway4 = Pathway.new(subject: "pathway 4", content: "pathway 4 - hi there!")
 bucket_dev.record(pathway4)

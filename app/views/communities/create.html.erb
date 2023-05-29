@@ -1,0 +1,9 @@
+<% if @community.errors.empty? %>
+  <h1>Community Created Successfully!</h1>
+  <p><%= notice %></p>
+  <p><%= link_to "View Community", @community %></p>
+<% else %>
+  <h1>New Community</h1>
+
+  <%= render "new" %>
+<% end %>

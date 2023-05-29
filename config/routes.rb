@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root "projects#index"
+  root "communities#index"
 
-  resources :projects do
-    resources :pathway_boards, only: :index, module: "projects"
+  resources :communities do
+    resources :pathway_boards, only: :index, module: "communities"
   end
 
   resources :buckets do

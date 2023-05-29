@@ -1,4 +1,4 @@
 class Account < ApplicationRecord
   has_many :buckets
-  has_many :projects
+  has_many :communities
 end

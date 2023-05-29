@@ -1,15 +1,15 @@
-<div class="panel panel--project">
-  <header class="project-header project-header--for-home centered u-position-context">
-    <div class="project-header__details">
-      <h1 class="project-header__name--overview">
-        <span class="project-header__name-text"><%= @project.title %></span>
+<div class="panel panel--community">
+  <header class="community-header community-header--for-home centered u-position-context">
+    <div class="community-header__details">
+      <h1 class="community-header__name--overview">
+        <span class="community-header__name-text"><%= @community.title %></span>
       </h1>
     </div>
   </header>
 
   <div class="card-grid card-grid--2-up">
     <article class="card card--pathway_board card--app card--docked">
-      <%= link_to bucket_pathways_url(@project.bucket), class: "card__link" do %>
+      <%= link_to bucket_pathways_url(@community.bucket), class: "card__link" do %>
         <div class="card__content">
           <header class="card__header centered">
             <h1 class="card__heading flush txt--truncate">

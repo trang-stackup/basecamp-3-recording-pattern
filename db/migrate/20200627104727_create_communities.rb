@@ -1,6 +1,6 @@
-class CreateProjects < ActiveRecord::Migration[6.1]
+class CreateCommunities < ActiveRecord::Migration[6.1]
   def change
-    create_table :projects do |t|
+    create_table :communities do |t|
       t.string :title
       t.references :account, null: false, foreign_key: true
 

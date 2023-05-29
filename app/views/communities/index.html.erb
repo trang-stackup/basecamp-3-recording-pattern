@@ -1,0 +1,18 @@
+<div class="panel filterable-communities">
+  <section class="community-index__section community-index__section--communities">
+    <header class="centered">
+      <h3 class="community-index__header break break--on-background push--top push_half--bottom">
+        <span>Communities</span>
+      </h3>
+      <aside class="community-index__toolbar community-index__toolbar--new hide-from-clients">
+        <%= link_to "+ New", new_community_url, class: "options-menu__expansion-toggle btn btn--small" %>
+      </aside>
+    </header>
+
+    <div class="card-grid--communities">
+      <span class="cards--unbookmarked">
+        <%= render @communities %>
+      </span>
+    </div>
+  </section>
+</div>

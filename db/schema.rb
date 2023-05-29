@@ -30,17 +30,17 @@ ActiveRecord::Schema[7.0].define(version: 2020_06_28_114556) do
     t.index ["bucketable_type", "bucketable_id"], name: "index_buckets_on_bucketable"
   end
 
-  create_table "pathways", force: :cascade do |t|
-    t.string "subject"
-    t.string "content"
-  end
-
-  create_table "projects", force: :cascade do |t|
+  create_table "communities", force: :cascade do |t|
     t.string "title"
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_projects_on_account_id"
+    t.index ["account_id"], name: "index_communities_on_account_id"
+  end
+
+  create_table "pathways", force: :cascade do |t|
+    t.string "subject"
+    t.string "content"
   end
 
   create_table "recordings", force: :cascade do |t|
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2020_06_28_114556) do
   end
 
   add_foreign_key "buckets", "accounts"
-  add_foreign_key "projects", "accounts"
+  add_foreign_key "communities", "accounts"
   add_foreign_key "recordings", "buckets"
   add_foreign_key "recordings", "recordings", column: "parent_id"
 end
