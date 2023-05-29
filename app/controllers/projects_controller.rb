@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Current.account.projects.all
+    # @projects = Current.account.projects.all
+    @projects = Project.where(id: Current.account.buckets.pluck(:bucketable_id))
   end
 
   def show
-    @project = Current.account.projects.find params[:id]
+    # @project = Current.account.projects.find params[:id]
+    @project = Current.account.buckets.find_by(bucketable_id: params[:id])&.bucketable
   end
 
   def new
