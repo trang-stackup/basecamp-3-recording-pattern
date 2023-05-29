@@ -36,9 +36,11 @@ Recording.create!(bucket:, recordable: comment3, parent_id: recording_msg3.id)
 account_dev = Account.create!(name: "dev@abc.co")
 bucket_dev = Bucket.create!(account: account_dev, bucketable: project)
 
-message4 = Message.create!(subject: "message 4", content: "message 4 - hi there!")
-recording_msg4 = Recording.create!(bucket: bucket_dev, recordable: message4)
+message4 = Message.new(subject: "message 4", content: "message 4 - hi there!")
+bucket_dev.record(message4)
+# recording_msg4 = Recording.create!(bucket: bucket_dev, recordable: message4)
 
 message2 = Message.second
-comment2 = message2.recordings.sole.children.second
-Recording.create!(bucket: bucket_dev, recordable: comment2, parent_id: recording_msg4.id)
+comment2 = message2.recordings.sole.children.second.comment
+bucket_dev.record(comment2, parent: message4.recordings.sole)
+# Recording.create!(bucket: bucket_dev, recordable: comment2, parent_id: recording_msg4.id)

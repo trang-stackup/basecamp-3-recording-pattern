@@ -6,7 +6,7 @@ class Bucket < ApplicationRecord
   def record(recordable, parent: nil, **options)
     recordable.save!
 
-    options.merge!(recordable:, parent:)
+    options.merge!(recordable:, parent_id: parent&.id)
     recordings.create!(options)
   end
 
