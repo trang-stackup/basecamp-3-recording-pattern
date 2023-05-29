@@ -8,20 +8,8 @@
   </header>
 
   <div class="card-grid card-grid--2-up">
-    <article class="card card--todoset card--app card--docked">
-      <%= link_to "#", class: "card__link" do %>
-        <div class="card__content">
-          <header class="card__header centered">
-            <h1 class="card__heading flush txt--truncate">
-              <span class="card__title">To-dos</span>
-            </h1>
-          </header>
-        </div>
-      <% end %>
-    </article>
-
     <article class="card card--message_board card--app card--docked">
-      <%= link_to bucket_messages_url(@project), class: "card__link" do %>
+      <%= link_to bucket_messages_url(@project.bucket), class: "card__link" do %>
         <div class="card__content">
           <header class="card__header centered">
             <h1 class="card__heading flush txt--truncate">
@@ -31,18 +19,5 @@
         </div>
       <% end %>
     </article>
-
-    <article class="card card--vault card--app card--docked">
-      <%= link_to "#", class: "card__link" do %>
-        <div class="card__content">
-          <header class="card__header centered">
-            <h1 class="card__heading flush txt--truncate">
-              <span class="card__title">Docs</span>
-            </h1>
-          </header>
-        </div>
-      <% end %>
-    </article>
   </div>
 </div>
-
