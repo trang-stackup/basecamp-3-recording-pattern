@@ -15,7 +15,7 @@
           <div class="pathway__date u-hide-on-template">
             <time datetime="<%= Current.account.created_at %>" data-local="time-or-date"><%= Current.account.created_at.strftime("%b %d") %></time>
             <span class="metadata__divider">·</span>
-            No one was notified.
+            Pathway with skill list.
           </div>
         </div>
       </div>
@@ -31,18 +31,18 @@
   <h2 class="thread__headline break break--thick break--flush-left">
     <span>
       <span>
-        Comments
+        Skills
       </span>
     </span>
   </h2>
 
   <section class="thread thread--comments">
     <div class="thread__entries">
-      <% @comments.each do |comment| %>
+      <% @skills.each do |skill| %>
         <article class="thread-entry">
           <header class="thread-entry__header">
             <%= image_tag "avatar-placeholder.png", class: "avatar thread-entry__avatar" %>
-            <span class="thread-entry__author"><strong><%= comment.bucket.account.name %></strong></span>
+            <span class="thread-entry__author"><strong><%= skill.bucket.account.name %></strong></span>
             <span class="thread-entry__options">
             <span class="action-sheet action-sheet--for-thread-entry thread-entry__menu u-position-context u-hide-on-phone">
               <span class="thread-entry__time metadata">
@@ -52,7 +52,7 @@
           </span>
           </header>
           <div class="thread-entry__content formatted_content">
-            <%= comment.comment.content %>
+            <%= skill.skill.content %>
           </div>
         </article>
       <% end %>

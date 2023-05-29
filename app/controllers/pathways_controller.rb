@@ -7,7 +7,7 @@ class PathwaysController < ApplicationController
   end
 
   def show
-    @comments = @recording.children.comments
+    @skills = @recording.children.skills
   end
 
   def new

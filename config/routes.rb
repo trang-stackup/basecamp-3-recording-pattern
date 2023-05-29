@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :pathways
 
     resources :recordings do
-      resources :comments
+      resources :skills
     end
   end
 

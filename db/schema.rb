@@ -30,10 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2020_06_28_114556) do
     t.index ["bucketable_type", "bucketable_id"], name: "index_buckets_on_bucketable"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "content"
-  end
-
   create_table "pathways", force: :cascade do |t|
     t.string "subject"
     t.string "content"
@@ -57,6 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2020_06_28_114556) do
     t.index ["bucket_id"], name: "index_recordings_on_bucket_id"
     t.index ["parent_id"], name: "index_recordings_on_parent_id"
     t.index ["recordable_type", "recordable_id"], name: "index_recordings_on_recordable"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "content"
   end
 
   create_table "users", force: :cascade do |t|

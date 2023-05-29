@@ -1,10 +1,10 @@
-class CommentsController < ApplicationController
+class SkillsController < ApplicationController
   include BucketScoped
   include PathwayScoped
   include SetRecordable
 
   def create
-    @recording = @bucket.record new_comment, parent: @pathway
+    @recording = @bucket.record new_skill, parent: @pathway
 
     respond_to do |format|
       format.html { redirect_to bucket_pathway_url(@bucket, @pathway) }
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def new_comment
-    Comment.new params.require(:comment).permit(:content)
+  def new_skill
+    Skill.new params.require(:skill).permit(:content)
   end
 end
