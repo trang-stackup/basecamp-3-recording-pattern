@@ -10,7 +10,7 @@ class Bucket < ApplicationRecord
     recordings.create!(options)
   end
 
-  # def messages
-  #   recordings.where(recordable_type: "Message")
+  # def pathways
+  #   recordings.where(recordable_type: "Pathway")
   # end
 end

@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
   include BucketScoped
-  include MessageScoped
+  include PathwayScoped
   include SetRecordable
 
   def create
-    @recording = @bucket.record new_comment, parent: @message
+    @recording = @bucket.record new_comment, parent: @pathway
 
     respond_to do |format|
-      format.html { redirect_to bucket_message_url(@bucket, @message) }
+      format.html { redirect_to bucket_pathway_url(@bucket, @pathway) }
     end
   end
 

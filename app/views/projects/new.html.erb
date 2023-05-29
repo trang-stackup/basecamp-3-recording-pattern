@@ -6,8 +6,8 @@
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
-        <% @project.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <% @project.errors.full_pathways.each do |pathway| %>
+          <li><%= pathway %></li>
         <% end %>
       </ul>
     </div>

@@ -1,24 +1,24 @@
 <div class="panel panel--perma">
-  <article class="message-board">
+  <article class="pathway-board">
     <header class="perma__header push--bottom">
-      <h1 class="perma__title perma__title--toolbar">Message Board</h1>
+      <h1 class="perma__title perma__title--toolbar">Pathway Board</h1>
       <label class="perma__new">
-        <%= link_to "+ New message", new_bucket_message_path(@bucket), class: "btn btn--small btn--primary" %>
+        <%= link_to "+ New pathway", new_bucket_pathway_path(@bucket), class: "btn btn--small btn--primary" %>
       </label>
     </header>
 
-    <section class="message-board__content push--top">
-      <table class="messages-table messages-table--for-index">
+    <section class="pathway-board__content push--top">
+      <table class="pathways-table pathways-table--for-index">
         <tbody>
-          <% @messages.each do |message| %>
-            <tr class="messages-table__row">
-              <td class="messages-table__avatar">
+          <% @pathways.each do |pathway| %>
+            <tr class="pathways-table__row">
+              <td class="pathways-table__avatar">
                 <%= image_tag "avatar-placeholder.png", class: "avatar" %>
               </td>
-              <td class="messages-table__what">
-                <%= link_to recordable_path(message) do %>
-                  <%= tag.strong message.recordable.subject, class: "messages-table__subject" %>
-                  <span class="messages-table__overflow">
+              <td class="pathways-table__what">
+                <%= link_to recordable_path(pathway) do %>
+                  <%= tag.strong pathway.recordable.subject, class: "pathways-table__subject" %>
+                  <span class="pathways-table__overflow">
                     <span class="txt--uncolor">
                       <%= Current.account.name %>
 
@@ -26,7 +26,7 @@
                         •
                         <time datetime="<%= Current.account.created_at %>" data-local="time-or-date"><%= Current.account.created_at.strftime("%b %d") %></time>
                         --
-                        <%= message.recordable.content %>
+                        <%= pathway.recordable.content %>
                       </span>
                     </span>
                   </span>

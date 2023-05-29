@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2020_06_28_114556) do
     t.string "content"
   end
 
-  create_table "messages", force: :cascade do |t|
+  create_table "pathways", force: :cascade do |t|
     t.string "subject"
     t.string "content"
   end

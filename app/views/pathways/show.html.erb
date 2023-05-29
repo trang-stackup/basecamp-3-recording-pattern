@@ -1,18 +1,18 @@
 <div class="panel panel--perma">
-  <article class="message">
-    <header class="message__header">
-      <h1 class="message__subject flush--top push_quarter--bottom">
+  <article class="pathway">
+    <header class="pathway__header">
+      <h1 class="pathway__subject flush--top push_quarter--bottom">
         <%= @recordable.subject %>
       </h1>
 
-      <div class="message__attribution">
-        <figure class="message__avatar">
-          <%= image_tag "avatar-placeholder.png", class: "avatar message__avatar-image" %>
+      <div class="pathway__attribution">
+        <figure class="pathway__avatar">
+          <%= image_tag "avatar-placeholder.png", class: "avatar pathway__avatar-image" %>
         </figure>
-        <div class="message__meta">
+        <div class="pathway__meta">
           <%= Current.account.name %>
 
-          <div class="message__date u-hide-on-template">
+          <div class="pathway__date u-hide-on-template">
             <time datetime="<%= Current.account.created_at %>" data-local="time-or-date"><%= Current.account.created_at.strftime("%b %d") %></time>
             <span class="metadata__divider">·</span>
             No one was notified.

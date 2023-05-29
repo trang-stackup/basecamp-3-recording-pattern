@@ -1,6 +1,6 @@
-<%= form_with(model: message, url: bucket_messages_url(@bucket)) do |form| %>
+<%= form_with(model: pathway, url: bucket_pathways_url(@bucket)) do |form| %>
   <article class="recordable document-style-editor flush--bottom autosaved__notice-container drop_zoned">
-    <h1 class="document-style-editor__title message__subject flush--top push_quarter--bottom">
+    <h1 class="document-style-editor__title pathway__subject flush--top push_quarter--bottom">
       <%= form.text_field :subject, placeholder: "Type a title...", class: "input input--full-width input--borderless input--title" %>
     </h1>
 
@@ -9,9 +9,9 @@
     </section>
 
   </article>
-  <footer class="message-composition__footer">
+  <footer class="pathway-composition__footer">
     <div class="submit-buttons submit-buttons--perma push--bottom">
-      <%= form.submit "Post ths message", class: "btn btn--primary" %>
+      <%= form.submit "Post ths pathway", class: "btn btn--primary" %>
     </div>
   </footer>
 <% end %>
