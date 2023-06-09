@@ -5,42 +5,39 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-account_test = Account.create!(name: "test@abc.co")
-community = Community.create!(title: "abc community", account: account_test)
-bucket = Bucket.create!(account: account_test, bucketable: community)
+account = Account.create!(name: "test@abc.co")
+Community.create!(title: "community 1")
+Community.create!(title: "community 2")
 
-2.times do |i|
+num = 2
+last_idx = num - 1
+num.times do |i|
   pathway = Pathway.create!(subject: "pathway #{i + 1}", content: "hello world #{i + 1}")
-  recording = Recording.create!(bucket:, recordable: pathway)
+  pathway_recording = Recording.create!(account:, recordable: pathway)
 
-  2.times do |j|
-    skill = Skill.create!(content: "pathway #{i + 1} skill #{i * 1 + j}")
-    Recording.create!(bucket:, recordable: skill, parent_id: recording.id)
+  num = 1 if i == last_idx
+
+  num.times do |j|
+    skill = Skill.create!(content: "skill #{i * j + 1}")
+    skill_recording = Recording.create!(account:, recordable: skill)
+
+    Edge.create!(source_id: pathway_recording.id, dest_id: skill_recording.id)
+
+    Relationship.create!(source: pathway, dest: skill)
+
+    if i == last_idx
+      Edge.create!(source_id: Recording.first.id, dest_id: skill_recording.id)
+
+      Relationship.create!(source: Pathway.first, dest: skill)
+    end
+
+    num.times do |k|
+      learning_module = LearningModule.create!(title: "module #{i * j * k + 1}")
+      learning_module_recording = Recording.create!(account:, recordable: learning_module)
+
+      Edge.create!(source_id: skill_recording.id, dest_id: learning_module_recording.id)
+
+      Relationship.create!(source: skill, dest: learning_module)
+    end
   end
 end
-
-pathway3 = Pathway.create!(subject: "pathway 3", content: "pathway 3 - Mixing skills of other pathways")
-recording_msg3 = Recording.create!(bucket:, recordable: pathway3)
-
-# pathway 3 shares the same first skill with pathway 1
-pathway1 = Pathway.first
-skill1 = pathway1.recordings.sole.children.first.skill
-Recording.create!(bucket:, recordable: skill1, parent_id: recording_msg3.id)
-
-# pathway 3 shares the same third skill with pathway 1
-pathway2 = Pathway.second
-skill3 = pathway2.recordings.sole.children.first.skill
-Recording.create!(bucket:, recordable: skill3, parent_id: recording_msg3.id)
-
-# account_dev has the same community as the
-account_dev = Account.create!(name: "dev@abc.co")
-bucket_dev = Bucket.create!(account: account_dev, bucketable: community)
-
-pathway4 = Pathway.new(subject: "pathway 4", content: "pathway 4 - hi there!")
-bucket_dev.record(pathway4)
-# recording_msg4 = Recording.create!(bucket: bucket_dev, recordable: pathway4)
-
-pathway2 = Pathway.second
-skill2 = pathway2.recordings.sole.children.second.skill
-bucket_dev.record(skill2, parent: pathway4.recordings.sole)
-# Recording.create!(bucket: bucket_dev, recordable: skill2, parent_id: recording_msg4.id)
