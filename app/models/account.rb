@@ -1,4 +1,3 @@
 class Account < ApplicationRecord
-  has_many :buckets
-  # has_many :communities
+  has_many :recordings
 end
