@@ -1,6 +1,7 @@
 class Community < ApplicationRecord
+  include Edgeable
+
   include Recordable
 
-  # belongs_to :account
-  has_one :bucket, as: :bucketable, touch: true
+  belongs_to :account
 end
