@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_024236) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_065536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_024236) do
     t.index ["account_id"], name: "index_communities_on_account_id"
   end
 
+  create_table "edges", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "source_id", null: false
+    t.bigint "dest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dest_id"], name: "index_edges_on_dest_id"
+    t.index ["source_id"], name: "index_edges_on_source_id"
+  end
+
   create_table "learning_modules", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -61,6 +70,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_024236) do
     t.index ["recordable_type", "recordable_id"], name: "index_recordings_on_recordable"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
+    t.string "dest_type", null: false
+    t.bigint "dest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dest_type", "dest_id"], name: "index_relationships_on_dest"
+    t.index ["source_type", "source_id", "dest_type", "dest_id"], name: "index_relationships_on_source_and_dest", unique: true
+    t.index ["source_type", "source_id"], name: "index_relationships_on_source"
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "content"
   end
@@ -79,6 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_024236) do
 
   add_foreign_key "buckets", "accounts"
   add_foreign_key "communities", "accounts"
+  add_foreign_key "edges", "recordings", column: "dest_id"
+  add_foreign_key "edges", "recordings", column: "source_id"
   add_foreign_key "recordings", "buckets"
   add_foreign_key "recordings", "recordings", column: "parent_id"
 end
