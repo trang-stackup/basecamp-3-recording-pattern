@@ -1,6 +1,6 @@
 class CreateEdges < ActiveRecord::Migration[7.0]
   def change
-    create_table :edges, id: :uuid do |t|
+    create_table :edges do |t|
       t.references :source, foreign_key: { to_table: :recordings }, index: true, null: false
       t.references :dest, foreign_key: { to_table: :recordings }, index: true, null: false
 
