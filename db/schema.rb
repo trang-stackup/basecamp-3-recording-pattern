@@ -20,25 +20,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_065536) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "buckets", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.string "bucketable_type", null: false
-    t.bigint "bucketable_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_buckets_on_account_id"
-    t.index ["bucketable_type", "bucketable_id"], name: "index_buckets_on_bucketable"
-  end
-
   create_table "communities", force: :cascade do |t|
     t.string "title"
-    t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_communities_on_account_id"
   end
 
-  create_table "edges", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "edges", force: :cascade do |t|
     t.bigint "source_id", null: false
     t.bigint "dest_id", null: false
     t.datetime "created_at", null: false
@@ -59,14 +47,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_065536) do
   end
 
   create_table "recordings", force: :cascade do |t|
-    t.bigint "bucket_id", null: false
+    t.bigint "account_id", null: false
     t.string "recordable_type", null: false
     t.bigint "recordable_id", null: false
-    t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bucket_id"], name: "index_recordings_on_bucket_id"
-    t.index ["parent_id"], name: "index_recordings_on_parent_id"
+    t.index ["account_id"], name: "index_recordings_on_account_id"
     t.index ["recordable_type", "recordable_id"], name: "index_recordings_on_recordable"
   end
 
@@ -98,10 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_065536) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "buckets", "accounts"
-  add_foreign_key "communities", "accounts"
   add_foreign_key "edges", "recordings", column: "dest_id"
   add_foreign_key "edges", "recordings", column: "source_id"
-  add_foreign_key "recordings", "buckets"
-  add_foreign_key "recordings", "recordings", column: "parent_id"
+  add_foreign_key "recordings", "accounts"
 end
